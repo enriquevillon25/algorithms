@@ -24,14 +24,27 @@ const sortDescendant = (arr) => {
   }
 };
 
-const deleteElementByIndex = (arr, pindex) => {
-  const newArray = [...arr.slice(0, pindex), ...arr.slice(pindex + 1)];
-  console.log("new array", newArray);
+const deleteElementByIndex = (arr, pindex) => [
+  ...arr.slice(0, pindex),
+  ...arr.slice(pindex + 1),
+];
+
+const deleteByElement = (arr, pelement) => {
+  const index = arr.findIndex((element) => element === pelement);
+  if (index === -1) {
+    return "No encontro elemento";
+  }
+  return [...arr.slice(0, index), ...arr.slice(index + 1)];
+};
+
+const sumAllElement = (arr) => {
+  return arr.reduce((accumulator, current) => accumulator + current, 0);
 };
 
 function main() {
-  let list = [4, 3, 2, 6, 10, 2];
-  deleteElementByIndex(list, 2);
+  let list = [4, 3, 2, 6, -10, 2];
+  console.log(deleteByElement(list, 8));
+  console.log(sumAllElement(list));
 }
 
 main();
