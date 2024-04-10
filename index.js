@@ -41,10 +41,33 @@ const sumAllElement = (arr) => {
   return arr.reduce((accumulator, current) => accumulator + current, 0);
 };
 
+const noRepeat = (arr) => {
+  let newArray = [];
+  let view = {};
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (!view[arr[i]]) {
+      newArray.push(arr[i]);
+      view[arr[i]] = true;
+    }
+  }
+  return newArray;
+};
+
+const changePosition = (arr) => {
+  let aux = [];
+  for (i = 0; i < arr.length / 2; i++) {
+    aux = arr[i];
+    arr[i] = arr[arr.length - i - 1];
+    arr[arr.length - i - 1] = aux;
+  }
+  return arr;
+};
+
 function main() {
   let list = [4, 3, 2, 6, -10, 2];
-  console.log(deleteByElement(list, 8));
-  console.log(sumAllElement(list));
+  //   deleteRepeats(list);
+  console.log(changePosition(list));
+  //   console.log(noRepeat(list));
 }
 
 main();
