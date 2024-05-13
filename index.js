@@ -63,12 +63,26 @@ const changePosition = (arr) => {
   return arr;
 };
 
+const selectRandom = (characters, selectedFirstCharacter) => {
+  const indexSelected = characters.findIndex(
+    (value) => value.id === selectedFirstCharacter.id
+  );
+  const availableCharacters = [
+    ...characters.slice(0, indexSelected),
+    ...characters.slice(indexSelected + 1),
+  ];
+
+  return availableCharacters[
+    Math.floor(Math.random() * availableCharacters.length + 1)
+  ];
+};
+
 function main() {
-  let list = [4, 3, 2, 6, -10, 2];
-  //   deleteRepeats(list);
-  console.log(changePosition(list));
-  //   console.log(noRepeat(list));
+  console.log(
+    selectRandom([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }], {
+      id: 3,
+    })
+  );
 }
 
 main();
-console.log("probbbbbbbb");
